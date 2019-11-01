@@ -270,6 +270,8 @@ public class Buscaminas {
 			
 			while(!placed) {
 				
+				
+				
 				int x = (int) (Math.random() * casillas.length);
 				int y = (int) (Math.random() * casillas[0].length);
 				
@@ -380,7 +382,7 @@ public class Buscaminas {
 	
 		boolean success;
 		
-		if(casillas[i][j].darSeleccionada()) {
+		if(casillas[i][j].darSeleccionada() || casillas[i][j].getFlagged()) {
 			success = false;
 		} else {
 			casillas[i][j].destapar();
@@ -447,6 +449,12 @@ public class Buscaminas {
 		}
 
 		return msg;
+	}
+	
+	public void flagCasilla(int i, int j) {
+		
+		casillas[i][j].flag();
+		
 	}
 	
 	/**

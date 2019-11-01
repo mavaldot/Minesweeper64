@@ -13,25 +13,16 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
+			FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
 			
 			Parent menuPane = menuLoader.load();
-			Scene menuScene = new Scene(menuPane,600,400);
+			Scene menuScene = new Scene(menuPane,800,600);
 			menuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
-			FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("game.fxml"));
+			primaryStage.setMinWidth(800);
+			primaryStage.setMinHeight(600);
 			
-			Parent gamePane = gameLoader.load();
-			Scene gameScene = new Scene(gamePane,600,400);
 			
-			MenuController menuController = (MenuController) menuLoader.getController();
-			menuController.setGameScene(gameScene);
-			
-			GameController gameController = (GameController) gameLoader.getController();
-			gameController.setMenuScene(menuScene);
-			
-			primaryStage.setMinWidth(600);
-			primaryStage.setMinHeight(400);
 			
 			primaryStage.setTitle("Buscaminas");
 			primaryStage.setScene(menuScene);
@@ -39,7 +30,8 @@ public class Main extends Application {
 			
 			
 					
-		} catch(Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

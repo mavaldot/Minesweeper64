@@ -46,6 +46,9 @@ public class Casilla {
 	 */
 	private int valor;
 
+	
+	private boolean flagged;
+	
 	 // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -58,6 +61,7 @@ public class Casilla {
 		this.tipo = tipo;
 		seleccionada = false;
 		valor = -1;
+		flagged = false;
 	}
 	
 
@@ -89,7 +93,12 @@ public class Casilla {
 		String valor = "";
 		
 		if(!seleccionada){
-			valor = "-";
+			
+			if (flagged)
+				valor = "F";	
+			else
+				valor = "  ";
+		
 		}else if(esMina()) {
 			valor = "*";
 		}else {
@@ -103,7 +112,9 @@ public class Casilla {
 	 * Marca la casilla como que ya fue selecciona
 	 */
 	public void destapar(){
-		seleccionada = true;
+		
+		if (!flagged)
+			seleccionada = true;
 	}
 	
 	/**
@@ -122,5 +133,12 @@ public class Casilla {
 		return valor;
 	}
 	
+	public void flag() {
+		flagged = !flagged;
+	}
+	
+	public boolean getFlagged() {
+		return flagged;
+	}
 	
 }
